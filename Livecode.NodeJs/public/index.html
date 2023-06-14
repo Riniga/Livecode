@@ -7,10 +7,9 @@
     <meta name="description" content="Just a pure semantic HTML markup, without .classes.  Built with Pico CSS." />
     <link rel="shortcut icon" href="https://picocss.com/favicon.ico" />
     <link rel="canonical" href="https://picocss.com/examples/classless/" />
-    <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.classless.min.css"
-    />
+    <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.classless.min.css" />
+    <link rel="stylesheet"  href="style.css" />
   </head>
-
   <body>
     <header>
       <hgroup>
@@ -24,23 +23,23 @@
         <p>
           This information is stored and used to illustrate the functionality for the project
         </p>
-        <form>
-          <input type="text" name="name" placeholder="Your Name" aria-label="Your Name" required/>
-          <input type="text" name="length" placeholder="Your length in cm" aria-label="Your length in cm" required />
-          <input type="text" name="weight" placeholder="Your weight in kg" aria-label="Your weight in kg" required />
+        <form action="javascript:module.saveuser()">
+          <input type="text" id="form_name" placeholder="Your Name" aria-label="Your Name" required/>
+          <input type="text" id="form_length" placeholder="Your length in cm" aria-label="Your length in cm" required />
+          <input type="text" id="form_weight" placeholder="Your weight in kg" aria-label="Your weight in kg" required />
           <fieldset>
             <label for="terms">
-              <input type="checkbox" role="switch" id="terms" name="terms" />
+              <input type="checkbox" role="switch" id="terms" name="terms" required/>
               I agree to the <a href="#" onclick="event.preventDefault()">Privacy Policy</a>
             </label>
           </fieldset>
-          <button type="submit">Post my data</button>
+          <button type="submit" ">Post my data</button>
         </form>
       </section>
       <section id="tables">
-        <h2>Tables</h2>
+        <h2>Users</h2>
         <figure>
-          <table role="grid">
+          <table role="grid" class="display" id="userstable">
             <thead>
               <tr>
                 <th scope="col">Timestamp</th>
@@ -52,27 +51,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">2023-06-13 14:59:51</th>
-                <td>af772b56-71ab-417f-be7e-36c7f5390f0e</td>
-                <td>Rickard</td>
-                <td>174</td>
-                <td>77</td>
-                <td>Chrome</td>
-              </tr>
-              <tr>
-                <th scope="row">2023-06-12 12:01:02</th>
-                <td>25b6ff5e-08f0-43a2-97fe-e92a5d62faeb</td>
-                <td>Test</td>
-                <td>180</td>
-                <td>73</td>
-                <td>Firefox</td>
-              </tr>
             </tbody>
           </table>
         </figure>
       </section>
-    
     </main>
 
     <footer>
@@ -83,5 +65,16 @@
         ></small
       >
     </footer>
-  </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+   
+    <script >
+      const module = {};
+    </script>
+    <script type="module" >
+      import { saveuser } from "./user.js";
+      module.saveuser = saveuser;
+    </script>
+
+</body>
 </html>
