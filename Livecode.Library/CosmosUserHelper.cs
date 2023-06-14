@@ -10,8 +10,9 @@ namespace Livecode.Library
         {
             var userFromDatabase = await ReadUserFromCosmosDb(user.Fingerprint);
             if (userFromDatabase != null) await DeleteUserFromCosmosDb(userFromDatabase.Fingerprint);
-
+                        
             Console.WriteLine("Create user with fingerprint: " + user.Fingerprint);
+            user.Timestamp = DateTime.UtcNow;
             var container = await GetContainer();
             await container.CreateItemAsync<User>(user, new PartitionKey(user.Fingerprint.ToString()));
         }
