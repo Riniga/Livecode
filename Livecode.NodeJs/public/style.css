@@ -1,0 +1,20 @@
+#userstable
+{
+  width: 100%;
+}
+#userstable_wrapper
+{
+  overflow-x: hidden;
+}
+#userstable_wrapper select, input[type=search]
+{
+  width: auto;
+}
+#userstable_wrapper .dataTables_length
+{
+  float: left;
+}
+#userstable_wrapper .dataTables_filter
+{
+  float: right;
+}
